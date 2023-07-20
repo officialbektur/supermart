@@ -1,5 +1,5 @@
 <?php
-	$title="Информация 1";
+	$title="Информация";
 	require $_SERVER['DOCUMENT_ROOT'] . "/layouts/app-start.php";
 ?>
 <section class="content moreinfo-tovar">
