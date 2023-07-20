@@ -1,11 +1,10 @@
 <?php
-	$title="Информация";
 	require $_SERVER['DOCUMENT_ROOT'] . "/layouts/app-start.php";
 ?>
 <section class="content moreinfo-tovar">
 	<div class="content__container">
 		<h2 class="_title">
-			<?php print $title; ?> о <?php echo mysqli_fetch_assoc(get_product_tovar())['title']; ?>
+			<?php echo mysqli_fetch_assoc(get_product_tovar())['title']; ?>
 		</h2>
 		<div class="moreinfo-tovar__body">
 			<div class="moreinfo-tovar__info moreinfo-tovar-info">
