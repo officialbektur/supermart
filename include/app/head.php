@@ -18,7 +18,7 @@
 	<!--------------------  SHORTCUT ICON  -------------------->
 	<link rel="shortcut icon" href="/img/shortcuticons/icon.png" type="image/x-icon" />
 	<!--------------------  TITLE  -------------------->
-	<title><?php echo $title ." - " . "myStartTemplate"; ?></title>
+	<title><?php echo $title ." - " . "supermart"; ?></title>
 	<!-------------------- DESCRIPTION OF THE SITE -------------------->
 	<meta name="description" content="" />
 	<!--------------------  Don't forget "On" indexing  -------------------->
