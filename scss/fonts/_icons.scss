@@ -1,0 +1,96 @@
+%ic {
+	font-family: 'icons' !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+[class*="icon-"] {
+	&:before {
+		@extend %ic;
+		display: inline-block;
+	}
+}
+[class^="icon-"], [class*=" icon-"] {
+	@extend %ic;
+	
+  }
+
+/* ====================  Titles  ==================== */  
+.icon-arrow-up:before {
+	content: "\e900";
+}
+.icon-filter:before {
+	content: "\e911";
+  }
+  .icon-comment:before {
+	content: "\e90f";
+  }
+  .icon-floppy-disk-regular:before {
+	content: "\e901";
+  }
+  .icon-floppy-disk-solid:before {
+	content: "\e902";
+  }
+  .icon-lock-solid:before {
+	content: "\e903";
+  }
+  .icon-pen-to-square-regular:before {
+	content: "\e904";
+  }
+  .icon-pen-to-square-solid:before {
+	content: "\e905";
+  }
+  .icon-plus-solid:before {
+	content: "\e906";
+  }
+  .icon-trash-can-regular:before {
+	content: "\e907";
+  }
+  .icon-trash-can-solid:before {
+	content: "\e908";
+  }
+  .icon-trash-solid:before {
+	content: "\e909";
+  }
+  .icon-user-large-solid:before {
+	content: "\e90a";
+  }
+  .icon-arrows-up-down-left-right-solid:before {
+	content: "\e90b";
+  }
+  .icon-ban-solid:before {
+	content: "\e90c";
+  }
+  .icon-eye-slash-solid:before {
+	content: "\e90d";
+  }
+  .icon-eye-solid:before {
+	content: "\e90e";
+  }
+  .icon-arrow-up:before {
+	content: "\e900";
+  }
+  .icon-image:before {
+	content: "\e910";
+  }
+  .icon-bubbles3:before {
+	content: "\e96f";
+  }
+  .icon-equalizer2:before {
+	content: "\e993";
+  }
+  .icon-earth:before {
+	content: "\e9ca";
+  }
+  .icon-star-full:before {
+	content: "\e9d9";
+  }
+  .icon-heart:before {
+	content: "\e9da";
+  }
+  

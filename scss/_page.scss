@@ -1,0 +1,34 @@
+/* =============================================  Page  --Start--  ============================================= */
+.page {
+	padding-top: rem(150);
+	@include adaptiveValue("padding-top", 150, 120, 991.98);
+	@include adaptiveValue("padding-top", 120, 100, 767.98, 991.98);
+	@include adaptiveValue("padding-top", 110, 94, 479.98, 767.98);
+	@include adaptiveValue("padding-top", 102, 94, 0, 479.98);
+}
+
+.content__body {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(180px, 1fr));
+
+	// display: flex;
+	// flex-wrap: wrap
+	@media (max-width: $tablet) {
+		grid-template-columns: repeat(4, minmax(20px, 1fr));
+	}
+
+	@media (max-width: $mobile) {
+		grid-template-columns: repeat(3, minmax(20px, 1fr));
+	}
+
+	@media (max-width: $mobileSmall) {
+		grid-template-columns: repeat(2, minmax(20px, 1fr));
+	}
+}
+
+@import "_product-block";
+@import "_product-block-con";
+@import "_mrb-admin";
+
+
+/* =============================================  Page  --End--  ============================================= */

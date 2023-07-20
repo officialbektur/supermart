@@ -1,0 +1,409 @@
+/* ===================================  Footer  --Start--  =================================== */
+.footer {
+	// @include adaptiveValue("margin-top", 22, 12);
+	@include adaptiveValue("padding-bottom", 70, 44, 0, 767.98);
+	background-color: #2F323A;
+	// .footer__body
+	&__body {
+		padding: rem(36) rem(0);
+		@include adaptiveValue("padding-top", 36, 26, 991.98);
+		@include adaptiveValue("padding-bottom", 36, 26, 991.98);
+	}
+	// .footer__content
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		@media (max-width: $mobile) {
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: flex-start;
+		}
+	}
+	// .footer__column
+	&__column {
+		@media (min-width: $mobile) {
+			margin: rem(0) rem(12);
+			@include adaptiveValue("margin-left", 12, 8, 991.98);
+			@include adaptiveValue("margin-rem", 12, 8, 991.98);
+			flex: 0 25%;
+			&:first-child {
+				margin-left: rem(0);
+			}
+			&:last-child {
+				margin-right: rem(0);
+			}
+		}
+		@media (max-width: $mobile) {
+			margin: rem(2) rem(0);
+			width: 100%;
+		}
+	}
+	// .footer-spoller
+	&-spoller {
+		// .footer-spoller__title
+		&__title {
+			position: relative;
+			width: 100%;
+			cursor: default;
+			text-align: left;
+			@include adaptiveValue("margin-top", 7, 5, 991.98);
+			@include adaptiveValue("margin-top", 6, 5, 767.98, 991.98);
+			@include adaptiveValue("margin-bottom", 7, 5, 991.98);
+			@include adaptiveValue("margin-bottom", 6, 5, 767.98, 991.98);
+			color: $colorWhite;
+			font-size: rem(22);
+			@include adaptiveValue("font-size", 22, 16, 991.98);
+			@include adaptiveValue("font-size", 17, 16, 767.98, 991.98);
+			@include adaptiveValue("font-size", 24, 18, 0, 767.98);
+			font-weight: 700;
+			@media (max-width: $mobile) {
+				padding: rem(6) rem(0);
+			}
+			._spoller-init & {
+				cursor: pointer;
+				&::before,
+				&::after {
+					content: "";
+					position: absolute;
+					right: rem(10);
+					top: 50%;
+					background-color: #ffffff;
+					height: rem(2);
+					width: rem(10);
+					@include adaptiveValue("width", 12, 10, 0, 767.98);
+					transition: transform 0.5s ease 0s;
+				}
+				&::before {
+					transform: translate(-75%, -50%) rotate(40deg);
+				}
+				&::after {
+					transform: translate(0, -50%) rotate(-40deg);
+				}
+				&._spoller-active {
+					&::before {
+						transform: translateX(-75%) rotate(-40deg);
+					}
+					&::after {
+						transform: rotate(40deg);
+					}
+				}
+			}
+		}
+		// .footer-spoller__content
+		&__content {
+		}
+	}
+	// .footer__infoaboutus
+	&__infoaboutus {
+		display: flex;
+		flex-direction: column;
+	}
+	// .footer-infoaboutus
+	&-infoaboutus {
+		// .footer-infoaboutus__logo
+		&__logo {
+			max-width: rem(220);
+			@include adaptiveValue("max-width", 220, 150, 991.98);
+			@include adaptiveValue("max-width", 140, 110, 767.98, 991.98);
+			@include adaptiveValue("max-width", 200, 140, 0, 767.98);
+		}
+		// .footer-infoaboutus__telephones
+		&__telephones {
+			padding-top: rem(10);
+			@include adaptiveValue("padding-top", 10, 6, 991.98);
+			display: flex;
+			flex-direction: column;
+			@media (max-width: $tablet) and (min-width: $mobile) {
+				padding-top: rem(5);
+			}
+		}
+		// .footer-infoaboutus-telephones
+		&-telephones {
+			// .footer-infoaboutus-telephones__title
+			&__title {
+
+			}
+			// .footer-infoaboutus-telephones__lists
+			&__lists {
+				display: flex;
+				flex-direction: column;
+			}
+			// .footer-infoaboutus-telephones__list
+			&__list {
+				margin: rem(3) rem(0);
+				padding: rem(3) rem(0);
+				color: $colorWhite;
+				font-size: rem(16);
+				@include adaptiveValue("font-size", 16, 12, 991.98);
+				@include adaptiveValue("font-size", 18, 16, 0, 767.98);
+				font-weight: 400;
+				@media (max-width: $tablet) and (min-width: $mobile) {
+					font-size: rem(12);
+				}
+			}
+		}
+		// .footer-infoaboutus__gmaile
+		&__gmaile {
+			color: $colorWhite;
+			font-size: rem(16);
+			@include adaptiveValue("font-size", 16, 12, 991.98);
+			@include adaptiveValue("font-size", 18, 16, 0, 767.98);
+			font-weight: 700;
+			@media (min-width: $mobile) {
+				margin-top: rem(10);
+			}
+			@media (max-width: $tablet) and (min-width: $mobile) {
+				font-size: rem(12);
+			}
+		}
+		// .footer-infoaboutus-gmaile
+		&-gmaile {
+			// .footer-infoaboutus-gmaile__title
+			&__title {
+			}
+		}
+	}
+	// .footer__infoaboutworking
+	&__infoaboutworking {
+	}
+	// .footer-infoaboutworking
+	&-infoaboutworking {
+		// .footer-infoaboutworking__title
+		&__title {
+		}
+		// .footer-infoaboutworking__content
+		&__content {
+			display: flex;
+			flex-direction: column;
+		}
+		// .footer-infoaboutworking-content
+		&-content {
+			// .footer-infoaboutworking-content__dayworking
+			&__dayworking {
+				margin: rem(6) rem(0);
+				@include adaptiveValue("margin-top", 6, 2, 991.98);
+				@include adaptiveValue("margin-bottom", 6, 2, 991.98);
+				display: flex;
+				flex-direction: column;
+				@media (max-width: $tablet) and (min-width: $mobile) {
+					margin: rem(2) rem(0);
+				}
+			}
+			// .footer-infoaboutworking-content-dayworking
+			&-dayworking {
+				// .footer-infoaboutworking-content-dayworking__title
+				&__title {
+					margin: rem(4) rem(0);
+					color: $colorWhite;
+					font-size: rem(18);
+					@include adaptiveValue("font-size", 18, 14, 991.98);
+					@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+					@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+					font-weight: 700;
+				}
+				// .footer-infoaboutworking-content-dayworking__infotext
+				&__infotext {
+					margin: rem(4) rem(0);
+					color: $colorWhite;
+					font-size: rem(18);
+					@include adaptiveValue("font-size", 18, 14, 991.98);
+					@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+					@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+					font-weight: 400;
+					line-height: math.div(24, 18);
+					text-decoration: underline;
+				}
+			}
+			// .footer-infoaboutworking-content__timework
+			&__timework {
+				margin: rem(6) rem(0);
+				@include adaptiveValue("margin-top", 6, 2, 991.98);
+				@include adaptiveValue("margin-bottom", 6, 2, 991.98);
+				display: flex;
+				flex-direction: column;
+				@media (max-width: $tablet) and (min-width: $mobile) {
+					margin: rem(2) rem(0);
+				}
+			}
+			// .footer-infoaboutworking-content-timework
+			&-timework {
+				// .footer-infoaboutworking-content-timework__title
+				&__title {
+					margin: rem(4) rem(0);
+					color: $colorWhite;
+					font-size: rem(18);
+					@include adaptiveValue("font-size", 18, 14, 991.98);
+					@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+					@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+					font-weight: 700;
+				}
+				// .footer-infoaboutworking-content-timework__infotext
+				&__infotext {
+					margin: rem(4) rem(0);
+					color: $colorWhite;
+					font-size: rem(18);
+					@include adaptiveValue("font-size", 18, 14, 991.98);
+					@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+					@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+					font-weight: 400;
+					line-height: math.div(24, 18);
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	// .footer__ouraddress
+	&__ouraddress {
+	}
+	// .footer-ouraddress
+	&-ouraddress {
+		// .footer-ouraddress__title
+		&__title {
+		}
+		// .footer-ouraddress__content
+		&__content {
+		}
+		// .footer-ouraddress-content
+		&-content {
+			// .footer-ouraddress-content__title
+			&__title {
+				margin: rem(4) rem(0);
+				color: $colorWhite;
+				font-size: rem(18);
+				@include adaptiveValue("font-size", 18, 14, 991.98);
+				@include adaptiveValue("font-size", 14, 12, 767.98, 991.98);
+				@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+				font-weight: 700;
+			}
+			// .footer-ouraddress-content__infotext
+			&__infotext {
+				margin: rem(4) rem(0);
+				color: $colorWhite;
+				font-size: rem(16);
+				@include adaptiveValue("font-size", 16, 12, 991.98);
+				@include adaptiveValue("font-size", 13, 12, 767.98, 991.98);
+				@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+				font-weight: 400;
+				line-height: math.div(24, 16);
+				text-decoration: underline;
+			}
+		}
+	}
+	// .footer__aboutuse
+	&__aboutuse {
+	}
+	// .footer-aboutuse
+	&-aboutuse {
+		// .footer-aboutuse__info
+		&__info {
+			display: flex;
+			flex-direction: column;
+		}
+		// .footer-aboutuse-info
+		&-info {
+			// .footer-aboutuse-info__title
+			&__title {
+			}
+			// .footer-aboutuse-info__lists
+			&__lists {
+				display: flex;
+				flex-direction: column;
+			}
+			// .footer-aboutuse-info__list
+			&__list {
+				margin: rem(2) rem(0);
+				padding: rem(3) rem(0);
+				color: $colorWhite;
+				font-size: rem(16);
+				@include adaptiveValue("font-size", 16, 12, 991.98);
+				@include adaptiveValue("font-size", 20, 16, 0, 767.98);
+				font-weight: 400;
+				line-height: math.div(20, 16);
+				@media (max-width: $tablet) and (min-width: $mobile) {
+					font-size: rem(12);
+				}
+			}
+		}
+		// .footer-aboutuse__soc
+		&__soc {
+			display: inline-flex;
+			flex-direction: column;
+			@media (min-width: $mobile) {
+				align-items: center;
+			}
+		}
+		// .footer-aboutuse-soc
+		&-soc {
+			// .footer-aboutuse-soc__title
+			&__title {
+				margin: rem(7) rem(0);
+				@include adaptiveValue("margin-top", 7, 5, 991.98);
+				@include adaptiveValue("margin-bottom", 7, 5, 991.98);
+				color: $colorWhite;
+				font-size: rem(22);
+				@include adaptiveValue("font-size", 22, 16, 767.98);
+				@include adaptiveValue("font-size", 24, 18, 0, 767.98);
+				font-weight: 700;
+				@media (min-width: $mobile) {
+					text-align: center;
+				}
+				@media (max-width: $tablet) and (min-width: $mobile) {
+					margin: rem(5) rem(0);
+				}
+			}
+			// .footer-aboutuse-soc__items
+			&__items {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			// .footer-aboutuse-soc__item
+			&__item {
+				margin: rem(0) rem(2);
+				padding: rem(0) rem(4);
+				@include adaptiveValue("padding-left", 4, 1, 991.98);
+				@include adaptiveValue("padding-right", 4, 1, 991.98);
+				@media (max-width: $tablet) and (min-width: $mobile) {
+					padding: rem(0) rem(1);
+				}
+				& * {
+					fill: $colorWhite;
+					width: rem(36);
+					@include adaptiveValue("width", 36, 26, 991.98);
+					@include adaptiveValue("width", 26, 22, 767.98, 991.98);
+					@include adaptiveValue("width", 36, 24, 0, 767.98);
+				}
+			}
+		}
+	}
+	// .footer__company
+	&__company {
+	}
+	// .footer-company
+	&-company {
+		// .footer-company__title
+		&__title {
+			padding: rem(20) rem(0);
+			@include adaptiveValue("padding-top", 20, 14, 991.98);
+			@include adaptiveValue("padding-top", 14, 12, 767.98, 991.98);
+			@include adaptiveValue("padding-top", 22, 10, 0, 767.98);
+			@include adaptiveValue("padding-bottom", 20, 14, 991.98);
+			@include adaptiveValue("padding-bottom", 14, 12, 767.98, 991.98);
+			@include adaptiveValue("padding-bottom", 22, 10, 0, 767.98);
+			color: #ffffff;
+			font-size: rem(16);
+			@include adaptiveValue("font-size", 16, 12, 991.98);
+			@include adaptiveValue("font-size", 16, 12, 0, 767.98);
+			font-weight: 700;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			text-align: center;
+			border-top: solid rem(1) #b3b3b3;
+			@media (max-width: $tablet) and (min-width: $mobile) {
+				font-size: rem(12);
+			}
+		}
+	}
+}
+/* ===================================  Footer  --End--  =================================== */

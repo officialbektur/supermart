@@ -1,0 +1,21 @@
+/*!
+ * lightgallery | 2.7.1 | January 11th 2023
+ * http://www.lightgalleryjs.com/
+ * Copyright (c) 2020 Sachin Neravath;
+ * @license GPLv3
+ */
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+var __assign=function(){return __assign=Object.assign||function(e){for(var t,i=1,o=arguments.length;i<o;i++)for(var l in t=arguments[i])Object.prototype.hasOwnProperty.call(t,l)&&(e[l]=t[l]);return e},__assign.apply(this,arguments)},lGEvents={afterAppendSlide:"lgAfterAppendSlide",init:"lgInit",hasVideo:"lgHasVideo",containerResize:"lgContainerResize",updateSlides:"lgUpdateSlides",afterAppendSubHtml:"lgAfterAppendSubHtml",beforeOpen:"lgBeforeOpen",afterOpen:"lgAfterOpen",slideItemLoad:"lgSlideItemLoad",beforeSlide:"lgBeforeSlide",afterSlide:"lgAfterSlide",posterClick:"lgPosterClick",dragStart:"lgDragStart",dragMove:"lgDragMove",dragEnd:"lgDragEnd",beforeNextSlide:"lgBeforeNextSlide",beforePrevSlide:"lgBeforePrevSlide",beforeClose:"lgBeforeClose",afterClose:"lgAfterClose",rotateLeft:"lgRotateLeft",rotateRight:"lgRotateRight",flipHorizontal:"lgFlipHorizontal",flipVertical:"lgFlipVertical",autoplay:"lgAutoplay",autoplayStart:"lgAutoplayStart",autoplayStop:"lgAutoplayStop"},hashSettings={hash:!0,galleryId:"1",customSlideName:!1},Hash=function(){function e(e,t){return this.core=e,this.$LG=t,this.settings=__assign(__assign({},hashSettings),this.core.settings),this}return e.prototype.init=function(){var e=this;this.settings.hash&&(this.oldHash=window.location.hash,setTimeout((function(){e.buildFromHash()}),100),this.core.LGel.on(lGEvents.afterSlide+".hash",this.onAfterSlide.bind(this)),this.core.LGel.on(lGEvents.afterClose+".hash",this.onCloseAfter.bind(this)),this.$LG(window).on("hashchange.lg.hash.global"+this.core.lgId,this.onHashchange.bind(this)))},e.prototype.onAfterSlide=function(e){var t=this.core.galleryItems[e.detail.index].slideName;t=this.settings.customSlideName&&t||e.detail.index,history.replaceState?history.replaceState(null,"",window.location.pathname+window.location.search+"#lg="+this.settings.galleryId+"&slide="+t):window.location.hash="lg="+this.settings.galleryId+"&slide="+t},e.prototype.getIndexFromUrl=function(e){void 0===e&&(e=window.location.hash);var t=e.split("&slide=")[1],i=0;if(this.settings.customSlideName)for(var o=0;o<this.core.galleryItems.length;o++){if(this.core.galleryItems[o].slideName===t){i=o;break}}else i=parseInt(t,10);return isNaN(i)?0:i},e.prototype.buildFromHash=function(){var e=window.location.hash;if(e.indexOf("lg="+this.settings.galleryId)>0){this.$LG(document.body).addClass("lg-from-hash");var t=this.getIndexFromUrl(e);return this.core.openGallery(t),!0}},e.prototype.onCloseAfter=function(){this.oldHash&&this.oldHash.indexOf("lg="+this.settings.galleryId)<0?history.replaceState?history.replaceState(null,"",this.oldHash):window.location.hash=this.oldHash:history.replaceState?history.replaceState(null,document.title,window.location.pathname+window.location.search):window.location.hash=""},e.prototype.onHashchange=function(){if(this.core.lgOpened){var e=window.location.hash,t=this.getIndexFromUrl(e);e.indexOf("lg="+this.settings.galleryId)>-1?this.core.slide(t,!1,!1):this.core.lGalleryOn&&this.core.closeGallery()}},e.prototype.closeGallery=function(){this.settings.hash&&this.$LG(document.body).removeClass("lg-from-hash")},e.prototype.destroy=function(){this.core.LGel.off(".lg.hash"),this.core.LGel.off(".hash"),this.$LG(window).off("hashchange.lg.hash.global"+this.core.lgId)},e}();export default Hash;
