@@ -60,6 +60,7 @@ async function asyncProducts(data = currentTovar) {
 
 			content.innerHTML += productsHTML;
 			lazyMedia.update();
+			lazyLoadImages();
 
 			canLoadMore = true;
 
@@ -284,11 +285,11 @@ function lazyLoadImages() {
 	const lazyImages = document.querySelectorAll('img[data-src]');
 	if (lazyImages.length > 0) {
 		lazyImages.forEach(img => {
-			if (img.dataset.src) {
+			// if (img.dataset.src) {
 				img.classList.remove("_loading");
-				img.src = img.dataset.src;
-				img.removeAttribute('data-src');
-			}
+				// img.src = img.dataset.src;
+				// img.removeAttribute('data-src');
+			// }
 		});
 	}
 }
@@ -340,7 +341,4 @@ function handleLazyLoad(colTovar, active = true) {
 const lazyMedia = new LazyLoad({
 	elements_selector: '[data-src]',
 	use_native: true,
-	callback_loaded: function (element) {
-		element.classList.remove('_loading'); // Удаляем класс _loading после загрузки
-	}
 });
