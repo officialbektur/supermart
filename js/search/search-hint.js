@@ -3,7 +3,7 @@ async function asyncSearchHint() {
 		return false;
 	}
 	try {
-		let response = await fetch('http://supermart/api/get/searchhint/');
+		let response = await fetch('/api/get/searchhint/');
 		if (response.ok) {
 			let result = await response.json();
 			if (document.querySelector(".header-top-search-hint__footer .header-top-search-hint__menu")) {

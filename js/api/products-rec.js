@@ -3,7 +3,7 @@ async function asyncProductsRec() {
 		return false;
 	}
 	try {
-		let response = await fetch('http://supermart/api/get/products/rec');
+		let response = await fetch('/api/get/products/rec');
 		if (response.ok) {
 			let result = await response.json();
 			let content = document.querySelector(".moreinfo-tovar__alsorecommend .swiper-wrapper");

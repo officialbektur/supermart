@@ -92,7 +92,7 @@ function addCategory() {
 							let formData = new FormData();
 							formData.append("name", document.querySelector(".bkt-addcatygory .bkt-addcatygory-addform__input").value);
 							formData.append("parent", document.querySelector(".bkt-addcatygory .bkt-catygory-product-id").value);
-							let response = await fetch('http://supermart/api/create/category', {
+							let response = await fetch('/api/create/category', {
 								method: "POST",
 								body: formData
 							});

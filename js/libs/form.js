@@ -6,7 +6,7 @@ if (document.querySelector('.mrb-admin__form')) {
 		e.preventDefault();
 		let formData = new FormData();
 		formData.append("title", document.querySelector(".bkt-addcatygory .bkt-addcatygory-addform__input").value);
-		let response = await fetch('http://supermart/api/create/tovar', {
+		let response = await fetch('/api/create/tovar', {
 			method: "POST",
 			body: formData
 		});

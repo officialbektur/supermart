@@ -1,6 +1,6 @@
 async function asyncCategoriesFilter() {
 	try {
-		let response = await fetch('http://supermart/api/get/categories/');
+		let response = await fetch('/api/get/categories/');
 		if (response.ok) {
 			let result = await response.json();
 			if (document.querySelector(".bkt-catygory .bkt-catygory-menu__main")) {

@@ -20,7 +20,7 @@ function calculateProductsPerPage() {
 }
 async function asyncProductsLength() {
 	try {
-		let response = await fetch(`http://supermart/api/get/products/length`);
+		let response = await fetch(`/api/get/products/length`);
 		if (response.ok) {
 			let productsLength = await response.json();
 			if (productsLength > 0) {
@@ -48,7 +48,7 @@ async function asyncProducts(data = currentTovar) {
 	let productsPerPage = calculateProductsPerPage();
 
 	try {
-		let response = await fetch(`http://supermart/api/get/products/page/${data}/col/${productsPerPage}`);
+		let response = await fetch(`/api/get/products/page/${data}/col/${productsPerPage}`);
 		if (response.ok) {
 			let productsData = await response.json();
 			currentTovar += productsPerPage;

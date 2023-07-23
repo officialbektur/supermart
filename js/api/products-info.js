@@ -8,7 +8,7 @@ async function asyncProduct() {
 		if (id === null || !Number.isInteger(id)) {
 			return false;
 		}
-		let response = await fetch(`http://supermart/api/get/products/${id}`);
+		let response = await fetch(`/api/get/products/${id}`);
 		if (response.ok) {
 			let result = await response.json();
 			if (document.querySelector(".moreinfo-tovar-info__textinfo.moreinfo-tovar-info-textinfo")) {
