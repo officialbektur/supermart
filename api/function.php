@@ -356,7 +356,6 @@ class Products {
 		$postsResult = mysqli_stmt_get_result($stmt);
 
 		if (mysqli_num_rows($postsResult) === 0) {
-			http_response_code(404);
 			$res = [
 				"status" => false,
 				"message" => "No posts found"

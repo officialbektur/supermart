@@ -163,3 +163,13 @@ function emSreenWidth(sreenWidth = 767.98) {
 		return (sreenWidth / 16) <= emSreenWidth;
 	}
 }
+function isScreenWidthInRange(screenWidth = 767.98) {
+	// Получаем текущее значение размера шрифта в пикселях
+	const fontSizeInPixels = parseFloat(window.getComputedStyle(document.documentElement).getPropertyValue('font-size'));
+
+	// Вычисляем значение ширины экрана в em, делением текущей ширины на размер шрифта
+	const emScreenWidth = window.innerWidth / fontSizeInPixels;
+
+	// Проверяем, попадает ли em-значение ширины экрана в заданный диапазон
+	return (screenWidth / fontSizeInPixels) <= emScreenWidth;
+}

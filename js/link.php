@@ -1,3 +1,4 @@
+<script src="/js/lazyload.min.js?<?php echo md5(time())?>"></script>
 <?php
 
 	$fileJs = '/js/';

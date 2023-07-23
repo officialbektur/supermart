@@ -2771,6 +2771,8 @@
 	&__loading {
 		width: 100%;
 
+		user-select: none;
+		
 		overflow: hidden;
 	}
 }

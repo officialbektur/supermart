@@ -1,100 +1,80 @@
-let page = 0;
-let loading = 0;
-let loadingTime = true;
+let currentTovar = 0; // Текущая страница товаров
+let canLoadMore = true; // Флаг для определения, можно ли загружать еще товары
 
-function colTovarsShow() {
-	if (!emSreenWidth(479.98)) {
-		if (page%6 == 0) {
-			return 6;
-		}
-		return page%6;
-	} else if (!emSreenWidth(767.98)) {
-		if (page%6 == 0) {
-			return 6;
-		}
-		return page%6;
-	} else if (!emSreenWidth(991.98)) {
-		if (page%8 == 0) {
-			return 8;
-		}
-		return page%8;
+// Функция для определения количества товаров на одной странице в зависимости от размера экрана
+function calculateProductsPerPage() {
+	// Пример использования:
+	if (!isScreenWidthInRange(479.98)) {
+		// Код для экрана с шириной менее 479.98 em
+		return currentTovar % 6 === 0 ? 6 : currentTovar % 6;
+	} else if (!isScreenWidthInRange(767.98)) {
+		// Код для экрана с шириной от 479.98 em до 767.98 em
+		return currentTovar % 6 === 0 ? 6 : currentTovar % 6;
+	} else if (!isScreenWidthInRange(991.98)) {
+		// Код для экрана с шириной от 767.98 em до 991.98 em
+		return currentTovar % 8 === 0 ? 8 : currentTovar % 8;
 	} else {
-		if (page%10 == 0) {
-			return 10;
-		}
-		return page%10;
+		// Код для экрана с шириной больше 991.98 em
+		return currentTovar % 10 === 0 ? 10 : currentTovar % 10;
 	}
 }
-
 async function asyncProductsLength() {
 	try {
 		let response = await fetch(`http://supermart/api/get/products/length`);
 		if (response.ok) {
-			let result = await response.json();
-			if (result > 0) {
-				asyncProducts(result);
-				loadingTime = false;
+			let productsLength = await response.json();
+			if (productsLength > 0) {
+				handleLazyLoad(productsLength);
 			} else {
-				deleteBlockTovarLoading();
-				animElements(1, 1);
-				loading = 1;
+				handleLazyLoad(0, false);
+				deleteLoadingBlock();
 			}
 		} else {
-			deleteBlockTovarLoading();
-			animElements(1, 1);
-			loading = 1;
+			handleLazyLoad(0, false);
+			deleteLoadingBlock();
 		}
 	} catch (error) {
-		deleteBlockTovarLoading();
-		animElements(1, 1);
-		loading = 1;
+		handleLazyLoad(0, false)
+		deleteLoadingBlock();
 	}
 }
 asyncProductsLength();
-
-async function asyncProducts(productsLength) {
+// Функция для асинхронного получения списка товаров на текущей странице
+async function asyncProducts(data = currentTovar) {
 	if (!document.querySelector(".index .content__body")) {
 		return false;
 	}
 
-	let col = colTovarsShow();
+	let productsPerPage = calculateProductsPerPage();
 
-	if (productsLength - page < col) {
-		col = productsLength - page;
-	}
+	try {
+		let response = await fetch(`http://supermart/api/get/products/page/${data}/col/${productsPerPage}`);
+		if (response.ok) {
+			let productsData = await response.json();
+			currentTovar += productsPerPage;
 
-	if (col == 0) {
-		animElements(1, 1);
-		loading = 1;
-		return false;
-	}
+			let content = document.querySelector(".index .content__body");
+			let productsHTML = generateProductBlocks(productsData);
 
-	let response = await fetch(`http://supermart/api/get/products/page/${page}/col/${col}`);
+			deleteLoadingBlock();
 
-	if (response.ok) {
-		let result = await response.json();
-		let content = document.querySelector(".index .content__body");
-		let menuHTML = blockProduct(result);
+			content.innerHTML += productsHTML;
+			lazyMedia.update();
 
-		deleteBlockTovarLoading();
+			canLoadMore = true;
 
-		content.innerHTML += menuHTML;
-
-		loadingTime = false;
-
-		addHintSearch();
-		if (productsLength > page) {
-
-			page += col;
-
-			creatBlockTovarLoading(col);
+			addHintSearch();
+		} else {
+			handleLazyLoad(false)
+			deleteLoadingBlock();
 		}
-	} else {
-		deleteBlockTovarLoading();
+	} catch (error) {
+		handleLazyLoad(false)
+		deleteLoadingBlock();
 	}
 }
-
-function blockProduct(data) {
+// Функция для генерации HTML-блока с информацией о товаре
+function generateProductBlocks(data) {
 	let html = '';
 	let entries = Object.entries(data);
 	for (let index = 0; index < entries.length; index++) {
@@ -141,7 +121,7 @@ function blockProduct(data) {
 			html += `
 					<div class="product-block-image__item product-block-image-item">
 						<div class="product-block-image-item__img">
-							<img src="img/product/image/${imageItem}" alt="${imageItem}">
+							<img data-src="img/product/image/${imageItem}" src="img/loading.gif" alt="${imageItem}" class="_loading">
 						</div>
 					`;
 			if ((mediaLength > 4 || (mediaLength - imageLength) > 0) && imageLength == index) {
@@ -274,17 +254,17 @@ function blockProduct(data) {
 	}
 	return html;
 }
-
-function deleteBlockTovarLoading() {
-	let block = document.querySelectorAll(".product__block.product-block._show-loading");
-	block.forEach(element => {
-		element.remove();
+// Функция для удаления блока с товаром, который еще загружается
+function deleteLoadingBlock() {
+	let loadingBlocks = document.querySelectorAll(".product__block.product-block._show-loading");
+	loadingBlocks.forEach(block => {
+		block.remove();
 	});
 }
-
-function creatBlockTovarLoading(params) {
+// Функция для создания блока товаров, которые еще загружаются
+function createLoadingBlock(productsCount) {
 	let content = document.querySelector(".index .content__body");
-	let block = `
+  	let loadingBlock = `
 				<div class="product__block product-block _show-loading">
 					<div class="product-block__image product-block-image">
 						<div class="product-block-image__content"></div>
@@ -295,55 +275,74 @@ function creatBlockTovarLoading(params) {
 						<div class="product-block-info__buttons"></div>
 					</div>
 				</div>`;
-	for (let index = 0; index < params; index++) {
-		content.innerHTML += block;
+	for (let i = 0; i < productsCount; i++) {
+		content.innerHTML += loadingBlock;
 	}
 }
-
-/* ===================================  Anim  --Start--  =================================== */
-function animElements(add = 0, def = 0) {
+// Функция для добавление картинок
+function lazyLoadImages() {
+	const lazyImages = document.querySelectorAll('img[data-src]');
+	if (lazyImages.length > 0) {
+		lazyImages.forEach(img => {
+			if (img.dataset.src) {
+				img.classList.remove("_loading");
+				img.src = img.dataset.src;
+				img.removeAttribute('data-src');
+			}
+		});
+	}
+}
+function createLoading(colTovar) {
+	if (colTovar - currentTovar > 0) {
+		if (colTovar - currentTovar < calculateProductsPerPage()) {
+			let calcSum = colTovar - currentTovar;
+			createLoadingBlock(calcSum);
+			handleLazyLoad(0, false);
+		} else {
+			createLoadingBlock(calculateProductsPerPage());
+		}
+		asyncProducts();
+	} else {
+		handleLazyLoad(0, false);
+	}
+}
+/* ===================================  handleLazyLoad  --Start--  =================================== */
+function handleLazyLoad(colTovar, active = true) {
 
 	const moreLoading = document.querySelector('.more__loading');
 
-
-	if (add == 1) {
+	if (!active) {
 		moreLoading.classList.remove('_show');
 		return false;
 	}
 
-	if (def == 1) {
-		moreLoading.classList.remove('_show');
-		return false;
-	}
+	function loadMore() {
+		const windowHeight = document.documentElement.clientHeight;
+		const loadMoreBlockPos = moreLoading.getBoundingClientRect().top + pageYOffset;
+		const loadMoreBlockHeight = moreLoading.offsetHeight;
 
-	window.addEventListener('scroll', animOnScroll);
-
-	function animOnScroll() {
-		if (!loadingTime) {
-			return false;
-		}
-		const moreLoadingHeight = moreLoading.offsetHeight;
-
-		const rect = moreLoading.getBoundingClientRect();
-		const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-		const moreLoadingOffset = rect.top + scrollTop;
-
-		const animStart = 5;
-
-		let moreLoadingPoint = window.innerHeight - moreLoadingHeight / animStart;
-
-		if (moreLoadingHeight > window.innerHeight) {
-			moreLoadingPoint = window.innerHeight - window.innerHeight / animStart;
-		}
-
-		if ((pageYOffset > moreLoadingOffset - moreLoadingPoint) && pageYOffset < (moreLoadingOffset + moreLoadingHeight)) {
-			if (loading == 0) {
-				moreLoading.classList.add('_show');
-				asyncProductsLength();
+		if (pageYOffset > (loadMoreBlockPos + loadMoreBlockHeight) - windowHeight) {
+			moreLoading.classList.add('_show');
+			if (canLoadMore == true) {
+				createLoading(colTovar);
+				canLoadMore = false;
 			}
+			setTimeout(() => {
+				moreLoading.classList.remove('_show');
+			}, 4200);
 		}
 	}
-	animOnScroll();
+
+	window.addEventListener('scroll', loadMore);
+	loadMore();
 }
-animElements();
-/* ===================================  Anim  --End--  =================================== */
+/* ===================================  handleLazyLoad  --End--  =================================== */
+
+
+const lazyMedia = new LazyLoad({
+	elements_selector: '[data-src]',
+	use_native: true,
+	callback_loaded: function (element) {
+		element.classList.remove('_loading'); // Удаляем класс _loading после загрузки
+	}
+});

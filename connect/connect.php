@@ -1,16 +1,16 @@
 <?php
 	// Подключение к localhost
-	define('HOST', 'localhost');
-	define('USER', 'root');
-	define('PASSWORD', '');
-	define('DATABASE', 'im');
+	// define('HOST', 'localhost');
+	// define('USER', 'root');
+	// define('PASSWORD', '');
+	// define('DATABASE', 'im');
 
 
 	// Подключение к базе данных сайта
-	// define('HOST', 'sql103.ezyro.com');
-	// define('USER', 'ezyro_30362188');
-	// define('PASSWORD', 'q1q2q3');
-	// define('DATABASE', 'ezyro_30362188_passwordavnanswers');
+	define('HOST', 'sql212.ezyro.com');
+	define('USER', 'ezyro_33325041');
+	define('PASSWORD', 'q1q2q3');
+	define('DATABASE', 'ezyro_33325041_im');
 	/*
 		* Подключаемся к базе данных с помощью функции mysqli_connect()
 	*/
