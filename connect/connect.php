@@ -20,7 +20,7 @@
 		* Если есть ошибки, останавливаем код и выводим сообщение с ошибкой
 	*/
 	if (!$connect) {
-		include "errorconnect.php";
+		// include "errorconnect.php";
 		exit();
 	}
 	mysqli_set_charset($connect, "utf8");
