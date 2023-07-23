@@ -337,8 +337,6 @@ function handleLazyLoad(colTovar, active = true) {
 	loadMore();
 }
 /* ===================================  handleLazyLoad  --End--  =================================== */
-
-
 const lazyMedia = new LazyLoad({
 	elements_selector: '[data-src]',
 	use_native: true,
