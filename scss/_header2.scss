@@ -1,0 +1,192 @@
+/* ===================================  Header  --Start--  =================================== */
+.header {
+	position: fixed;
+	top: rem(0);
+	left: rem(0);
+	width: 100%;
+	background-color: #3F8EE4;
+	z-index: 90;
+	// transition: top 0.44s ease 0s;
+	// &._header-scroll {
+	// 	top: rem(-80);
+	// 	background: $colorBlack;
+	// }
+	// &._header-show {
+	// 	top: rem(0);
+	// }
+	// .header__body 
+	&__body {
+		padding: rem(13) rem(0);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+		z-index: 95;
+	}
+	// .header__menu
+	&__menu {
+		margin-left: rem(20);
+	}
+}
+@import "header/_header__logo";// ====================  here Logo  ==================== //
+/* ====================  Menu list  ==================== */
+// .menu__list 
+.menu__list {
+	@include adaptiveValue("margin-left", 100, 0, 360.98, 767.98);
+	@include adaptiveValue("margin-right", 100, 0, 360.98, 767.98);
+	@media (min-width: $mobile) {
+		padding: rem(10) rem(6);
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		align-items: center;
+	}
+	@media (max-width: $mobile) {
+		position: relative;
+		padding-bottom: rem(60);
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		// .menu__list li
+		li {
+			display: flex;
+			justify-content: center;
+		}
+	}
+	// .menu__list > li
+	> li {
+		position: relative;
+		@include adaptiveValue("margin-left", 30, 14, 767.98);
+		@include adaptiveValue("padding-top", 8, 5, 767.98);
+		@include adaptiveValue("padding-bottom", 8, 5, 767.98);
+		&:first-child {
+			margin-left: rem(0);
+		}
+		@media (max-width: $mobile) {
+			flex-wrap: wrap;
+		}
+	}
+}
+// .menu__link
+.menu__link {
+	padding: rem(10) rem(0);
+	width: 100%;
+	color: $colorWhite;
+	font-size: rem(16);
+	@include adaptiveValue("font-size", 36, 30, 0, 767.98);
+	font-weight: 500;
+	cursor: pointer;
+	user-select: none;
+	-webkit-tap-highlight-color: $clickByTouchColor0;
+	transition: all 0.42s ease 0s;
+	// html._pc .menu__link:hover
+	html._pc &:hover {
+		text-decoration: underline;
+	}
+	@media (max-width: $mobile) {
+		padding: rem(20) rem(0);
+		text-align: center;
+	}
+}
+/* ====================  Icon Menu Burger  ==================== */
+// .icon-menu
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		@include adaptiveValue("width", 70, 34, 0, 767.98);
+		@include adaptiveValue("height", 36, 26, 0, 767.98);
+		background: transparent;
+		cursor: pointer;
+		z-index: 100;
+		-webkit-tap-highlight-color: $clickByTouchColor0;
+		// .icon-menu span
+		// .icon-menu::before
+		// .icon-menu::after
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			left: rem(0);
+			position: absolute;
+			width: 100%;
+			height: rem(3);
+			background-color: $colorWhite;
+			box-shadow: rem(0) rem(0) rem(2) $colorWhite;
+		}
+		// .icon-menu::before
+		&::before {
+			top: rem(0);
+		}
+		// .icon-menu::after
+		&::after {
+			bottom: rem(0);
+		}
+		// .icon-menu::span
+		span {
+			top: calc(50% - rem(1.5));
+		}
+		// .menu-open .icon-menu span
+		// .menu-open .icon-menu::before
+		// .menu-open .icon-menu::after
+		.menu-open & {
+			span {
+				transform: scale(0);
+			}
+			&::before {
+				transform: rotate(-45deg);
+				top: calc(50% - rem(1));
+			}
+			&::after {
+				transform: rotate(45deg);
+				bottom: calc(50% - rem(1));
+			}
+		}
+	}
+}
+// .menu__body
+.menu__body {
+	@include adaptiveValue("padding-top", 100, 80, 0, 767.98);
+	@include adaptiveValue("padding-left", 30, 10, 0, 767.98);
+	@include adaptiveValue("padding-right", 30, 10, 0, 767.98);
+	@include adaptiveValue("padding-bottom", 15, 10, 0, 767.98);
+	@media (min-width: $mobile) {
+		display: flex;
+		align-items: center;
+	}
+	@media (max-width: $mobile) {
+		position: fixed;
+		top: rem(0);
+		right: -100%;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.86);
+		overflow-y: auto;
+		transition: right 0.5s ease 0s;
+		// .menu__body::before
+		&::before {
+			content: "";
+			position: fixed;
+			top: rem(0);
+			right: -100%;
+			width: 100%;
+			height: rem(70);
+			background-color: $colorBlack;
+			z-index: 90;
+			transition: right 0.5s ease 0s;
+		}
+		// .menu-open .menu__body::before
+		.menu-open &::before {
+			right: rem(0);
+		}
+		// .menu-open .menu__body
+		.menu-open & {
+			right: rem(0);
+		}
+	}
+}
+@import "header/_dropdown__list";// ====================  here Dropdown list  ==================== //
+/* ===================================  Header  --End--  =================================== */

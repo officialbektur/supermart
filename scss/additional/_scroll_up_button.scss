@@ -1,0 +1,54 @@
+/* =============================================  Scroll Up Button  --Start--  ============================================= */
+// .scroll-up__button
+.scroll-up__button {
+	position: fixed;
+	@include adaptiveValue("bottom", 44, 33, 767.98);
+	@include adaptiveValue("bottom", 80, 72, 0, 767.98);
+	@include adaptiveValue("right", 12, 10, 767.98);
+	@include adaptiveValue("right", 12, 8, 0, 767.98);
+    z-index: 80;
+	pointer-events: none;
+    cursor: pointer;
+	opacity: 0;
+    visibility: hidden;
+	-webkit-tap-highlight-color: $clickByTouchColor0;
+	transition: opacity 0.52s ease 0s;
+	&._active {
+		pointer-events: all;
+		opacity: 1;
+		visibility: visible;
+	}
+}
+// .scroll-up-button
+.scroll-up-button {
+	// .scroll-up-button__icon
+	&__icon {
+		padding: rem(12);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #DaDaDa;
+		box-shadow: rem(0) rem(0) rem(2) rem(0) #DaDaDa,
+					rem(0) rem(0) rem(4) rem(0) #DaDaDa,
+					rem(0) rem(0) rem(6) rem(0) #DaDaDa,
+					rem(0) rem(0) rem(10) rem(0) #DaDaDa;
+		transition: all 0.4s ease-in-out 0s;
+		html._pc &:hover {
+			box-shadow: rem(0) rem(0) rem(5) rem(0) #DaDaDa,
+						rem(0) rem(0) rem(7) rem(0) #DaDaDa,
+						rem(0) rem(0) rem(10) rem(0) #DaDaDa,
+						rem(0) rem(0) rem(14) rem(0) #DaDaDa;
+		}
+		// .mb-footer-sidbar-block-info__icon svg
+		& svg {
+			width: rem(32);
+			@include adaptiveValue("width", 32, 20, 0, 767.98);
+			height: rem(32);
+			@include adaptiveValue("height", 32, 20, 0, 767.98);
+			& * {
+				fill: $colorBlack;
+			}
+		}
+	}
+}
+/* =============================================  Scroll Up Button  --End--  ============================================= */

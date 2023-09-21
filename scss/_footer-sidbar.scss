@@ -1,0 +1,117 @@
+/* ===================================  Footer  --Start--  =================================== */
+.mb-footer-sidbar {
+	position: fixed;
+	left: rem(0);
+	bottom: rem(0);
+	width: 100%;
+	background-color: #408de4;
+	border-top: solid rem(1) $colorWhite;
+	z-index: 90;
+	@media (min-width: $mobile) {
+		display: none;
+	}
+	// .mb-footer-sidbar__maxcontainer
+	&__maxcontainer {
+		max-width: rem(580);
+		margin: 0 auto;
+	}
+	// .mb-footer-sidbar__body
+	&__body {
+		padding: rem(4) rem(0);
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		@media (max-width: $mobile) {
+			padding: rem(2) rem(0);
+		}
+	}
+	// .mb-footer-sidbar__block
+	&__block {
+		padding: rem(5) rem(10);
+		@include adaptiveValue("padding-top", 5, 3, 479.98, 767.98);
+		@include adaptiveValue("padding-bottom", 5, 3, 479.98, 767.98);
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		&:first-child {
+			margin-left: rem(0);
+		}
+		&:last-child {
+			margin-right: rem(0);
+		}
+	}
+	// .mb-footer-sidbar-block
+	&-block {
+		// .mb-footer-sidbar-block__info
+		&-info {
+			position: relative;
+			z-index: 1;
+		}
+		// .mb-footer-sidbar-block-info
+		&-info {
+			// .mb-footer-sidbar-block-info__icon
+			&__icon {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				// .mb-footer-sidbar-block-info__icon svg
+				& svg {
+					width: rem(32);
+					@include adaptiveValue("width", 32, 20, 0, 767.98);
+					height: rem(32);
+					@include adaptiveValue("height", 32, 20, 0, 767.98);
+					& * {
+						fill: $colorWhite;
+					}
+				}
+			}
+			// .mb-footer-sidbar-block-info__number
+			&__number {
+				position: absolute;
+				bottom: rem(18);
+				@include adaptiveValue("bottom", 18, 14, 479.98, 767.98);
+				@include adaptiveValue("bottom", 14, 12, 0, 479.98);
+				left: rem(22);
+				@include adaptiveValue("left", 22, 16, 479.98, 767.98);
+				@include adaptiveValue("left", 16, 14, 0, 479.98);
+				width: rem(34);
+				@include adaptiveValue("width", 34, 22, 479.98, 767.98);
+				@include adaptiveValue("width", 22, 20, 0, 479.98);
+				height: rem(24);
+				@include adaptiveValue("height", 24, 16, 479.98, 767.98);
+				@include adaptiveValue("height", 16, 14, 0, 479.98);
+				color: $colorWhite;
+				font-size: rem(12);
+				@include adaptiveValue("font-size", 12, 8, 479.98, 767.98);
+				@include adaptiveValue("font-size", 8, 6, 0, 479.98);
+				font-weight: 700;
+				white-space: nowrap;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				align-content: start;
+				border-radius: rem(10);
+				background-color: $colorRed;
+				box-shadow: rem(0) rem(0) rem(1) $colorRed,
+							rem(0) rem(0) rem(2) $colorRed,
+							rem(0) rem(0) rem(4) $colorRed;
+			}
+		}
+		// .mb-footer-sidbar-block__title
+		&__title {
+			position: relative;
+			display: block;
+			padding-top: rem(6);
+			@include adaptiveValue("padding-top", 6, 4, 0, 767.98);
+			color: $colorWhite;
+			font-size: rem(14);
+			@include adaptiveValue("font-size", 14, 10, 0, 767.98);
+			font-weight: normal;
+			white-space: nowrap;
+			z-index: 1;
+		}
+	}
+}
+/* ===================================  Footer  --End--  =================================== */

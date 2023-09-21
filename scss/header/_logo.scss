@@ -1,0 +1,13 @@
+/* ===================================  Logo  --Start--  =================================== */
+// .header-top__logo
+.header-top__logo {
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: rem(220);
+	@include adaptiveValue("flex-basis", 220, 150, 991.98);
+	@include adaptiveValue("flex-basis", 150, 110, 767.98, 991.98);
+	@include adaptiveValue("flex-basis", 140, 120, 479.98, 767.98);
+	@include adaptiveValue("flex-basis", 130, 120, 0, 479.98);
+	height: 100%;
+}
+/* ===================================  Logo  --End--  =================================== */

@@ -1,0 +1,43 @@
+/* ===================================  Background Colors  --Start--  =================================== */
+$bgcbody: #181818;
+$bgcfooter: #1B3544;
+/* ===================================  Background Colors  --End--  =================================== */
+/* ====================  Additionally Used Colors For The Background In The Layout  --Start--  ==================== */
+
+
+
+/* ====================  Additionally Used Colors For The Background In The Layout  --End--  ==================== */
+/* ===================================  Touch Colors  --Start--  =================================== */
+$clickByTouchColor0: rgba(0, 0, 0, 0);
+$clickByTouchColor1: rgba(68, 178, 195, 0.3);
+/* ===================================  Touch Colors  --End--  =================================== */
+/* ===================================  Colors  --Start--  =================================== */
+$colorWhite: #FFFFFF;
+$colorBlack: #000000;
+$colorRed: #FF0000;
+$colorYellow: #FFFF00;
+$colorOrange: #FFA500;
+$colorBlue: #0000FF;
+$colorNavy: #000080;
+$colorGreen: #008000;
+$colorLime: #00ff00;
+$colorFuchsia: #ff00ff;
+$colorPurple: #800080;
+$colorIndigo: #4B0082;
+
+
+$primary-light: #8abdff;
+$primary: #6d5dfc;
+$primary-dark: #5b0eeb;
+
+$greyLight-1: #323232;
+$greyLight-2: #6d5dfc;
+$greyLight-3: #6d5dfc;
+$greyDark: #9baacf;
+//* ===================================  Colors  --End--  =================================== */
+$shadow: rem(4.8) rem(4.8) rem(9.6) #6d5dfc,
+			rem(-3.2) rem(-3.2) rem(8) #6d5dfc;
+$inner-shadow: inset rem(3.2) rem(3.2) rem(8) $greyLight-2,
+					inset rem(-3.2) rem(-3.2) rem(8) #6d5dfc;
+$shadow-error: rem(3.2) rem(3.2) rem(8) #ff000061,
+				rem(-3.2) rem(-3.2) rem(8) #fd9090;
