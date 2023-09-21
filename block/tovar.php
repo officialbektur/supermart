@@ -1,4 +1,4 @@
-ovar-body-reviews__comentary<?php
+<?php
 	$allProducts = get_allProducts();
 	foreach ($allProducts as $allProduct) {
 ?>
